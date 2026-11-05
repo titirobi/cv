@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robert Levente Titi – CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent:    #2e7d6e;
+      --accent-lt: #e8f5f2;
+      --text:      #1a1a1a;
+      --muted:     #5c6370;
+      --border:    #e0e4e8;
+      --bg:        #f7f8fa;
+      --white:     #ffffff;
+      --radius:    6px;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      padding: 2rem 1rem;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--accent);
+      color: #fff;
+      padding: 2.4rem 2.8rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: 3px solid rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .header-info h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.6rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem 1.4rem;
+      font-size: 13px;
+      opacity: 0.92;
+    }
+
+    .header-meta span { display: flex; align-items: center; gap: 0.35rem; }
+
+    /* BODY */
+    .body { padding: 2.4rem 2.8rem; display: grid; gap: 2.4rem; }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent-lt);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* TIMELINE */
+    .timeline { display: grid; gap: 1.8rem; }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0 1.6rem;
+    }
+
+    .entry-date {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 500;
+      padding-top: 2px;
+      text-align: right;
+      line-height: 1.4;
+    }
+    .entry-date .current {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-top: 3px;
+    }
+
+    .entry-content {
+      border-left: 2px solid var(--border);
+      padding-left: 1.4rem;
+      position: relative;
+    }
+    .entry-content::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 5px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .entry-title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .entry-company { font-size: 12px; color: var(--muted); margin-bottom: 0.6rem; }
+    .entry-summary { color: var(--muted); font-size: 13px; margin-bottom: 0.7rem; line-height: 1.65; }
+
+    .entry-bullets { list-style: none; display: grid; gap: 0.35rem; }
+    .entry-bullets li {
+      font-size: 13px;
+      color: #3a3f4a;
+      padding-left: 1rem;
+      position: relative;
+      line-height: 1.5;
+    }
+    .entry-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+      top: 2px;
+    }
+
+    /* SKILLS */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .tag {
+      background: var(--accent-lt);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(46,125,110,0.2);
+    }
+
+    /* LANGUAGE TABLE */
+    .lang-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .lang-table th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 6px 10px 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-table td {
+      padding: 8px 10px 8px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .lang-table tr:last-child td { border-bottom: none; }
+    .lang-name { font-weight: 600; }
+    .cefr {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 12px;
+      background: var(--accent-lt);
+      color: var(--accent);
+    }
+    .lang-note { font-size: 11px; color: var(--muted); margin-top: 0.6rem; font-style: italic; }
+
+    /* HOBBIES */
+    .hobbies-intro { color: var(--muted); font-size: 13px; margin-bottom: 1rem; line-height: 1.7; }
+    .hobbies-list { list-style: none; display: grid; gap: 0.5rem; }
+    .hobbies-list li {
+      font-size: 13px;
+      padding-left: 1.2rem;
+      position: relative;
+      color: var(--muted);
+    }
+    .hobbies-list li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 10px;
+      top: 2px;
+    }
+    .hobbies-list strong { color: var(--text); }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; border-radius: 0; }
+    }
+
+    @media (max-width: 640px) {
+      .header { grid-template-columns: 1fr; text-align: center; padding: 1.6rem; }
+      .header-meta { justify-content: center; }
+      .body { padding: 1.6rem; }
+      .entry { grid-template-columns: 1fr; }
+      .entry-date { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="avatar">RT</div>
+    <div class="header-info">
+      <h1>Robert Levente Titi</h1>
+      <div class="header-meta">
+        <span>📍 Târgu Mureș, Romania</span>
+        <span>📞 <a href="tel:+40756768965" style="color:#fff">(+40) 756 768 965</a></span>
+        <span>✉ <a href="mailto:titirobilevi@gmail.com" style="color:#fff">titirobilevi@gmail.com</a></span>
+        <span>🔗 <a href="https://www.linkedin.com/in/titi-robert-levente-45b684a7/" target="_blank" style="color:#fff">LinkedIn</a></span>
+        <span>🎂 16 April 1992 · Hungarian, Romanian</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <section>
+      <div class="section-title">Work Experience</div>
+      <div class="timeline">
+
+        <div class="entry">
+          <div class="entry-date">
+            Jun 2024 – <div class="current">Present</div>
+          </div>
+          <div class="entry-content">
+            <div class="entry-title">Software Developer</div>
+            <div class="entry-company">Lynx Solutions SRL · Târgu Mureș, Romania</div>
+            <p class="entry-summary">Onboarded to the engineering team to support and evolve a large-scale global platform. Focused on maintaining system stability, enhancing cross-system connectivity, and delivering features within a Kanban framework.</p>
+            <ul class="entry-bullets">
+              <li>Design and maintain REST API endpoints to facilitate seamless communication and data exchange between the core platform and external systems.</li>
+              <li>Proactively identify and resolve complex issues within the core platform to ensure high availability and performance across the technical ecosystem.</li>
+              <li>Utilize Datadog to monitor system health, troubleshoot performance bottlenecks, and resolve real-time production issues.</li>
+              <li>Manage workflow and task prioritization using Jira within a Kanban methodology to ensure steady delivery of system updates and bug fixes.</li>
+              <li>Maintain and update both modern and legacy components of the stack, ranging from .NET and MS SQL backend services to Silverlight-based interfaces.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Jan 2021 –<br/>Jun 2024</div>
+          <div class="entry-content">
+            <div class="entry-title">Software Developer</div>
+            <div class="entry-company">Lynx Solutions SRL · Târgu Mureș, Romania</div>
+            <p class="entry-summary">Led full-lifecycle delivery of a major data exploration and brand-tracking project — from initial architecture and database design through cloud deployment and legacy system maintenance.</p>
+            <ul class="entry-bullets">
+              <li>Designed and implemented complete project structure including SQL Server database, .NET Core backend, and Angular frontend.</li>
+              <li>Set up and managed Azure environments with secure identity management via Azure AD and Azure Key Vault.</li>
+              <li>Established automated deployment processes and CI/CD pipelines in Azure DevOps to streamline build cycles and server releases.</li>
+              <li>Collaborated in an Agile environment, delivering high-quality code across Sprints to meet complex project milestones.</li>
+              <li>Provided ongoing maintenance and feature updates for legacy projects to ensure system stability.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Oct 2016 –<br/>Jan 2021</div>
+          <div class="entry-content">
+            <div class="entry-title">Software Developer</div>
+            <div class="entry-company">Lynx Solutions SRL · Târgu Mureș, Romania</div>
+            <p class="entry-summary">Contributed to Digital Deliverables and Dashboard platforms for a global market research company, focused on data visualization, automated reporting, and large-scale respondent communication.</p>
+            <ul class="entry-bullets">
+              <li>Built tools to manage and send questionnaire invitation emails to respondents, including a custom email template editor.</li>
+              <li>Created platforms allowing multiple clients to view aggregated survey response data through interactive widgets.</li>
+              <li>Developed an export tool to convert dashboard widgets and charts into PowerPoint presentations.</li>
+              <li>Integrated Hangfire job scheduler for scheduled data imports and automated delivery of data reports to clients.</li>
+              <li>Integrated Sentry.io for real-time error tracking and alerting, improving system stability and reducing debugging time.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-date">Apr 2013 –<br/>May 2016</div>
+          <div class="entry-content">
+            <div class="entry-title">Software Developer</div>
+            <div class="entry-company">Camelweb Creations · Târgu Mureș, Romania</div>
+            <p class="entry-summary">Developed high-visibility, multi-language presentation and contest websites for global brands.</p>
+            <ul class="entry-bullets">
+              <li>Developed responsive, multi-language websites integrating social media APIs (Instagram) and interactive HTML5 elements.</li>
+              <li>Implemented multi-language support across all platforms to ensure consistent brand presentation across international markets.</li>
+              <li>Converted design mockups into functional web applications.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Skills</div>
+      <div class="skills-grid">
+        <span class="tag">C#</span>
+        <span class="tag">.NET Core</span>
+        <span class="tag">ASP.NET MVC</span>
+        <span class="tag">ASP.NET WebForms</span>
+        <span class="tag">Web API</span>
+        <span class="tag">Entity Framework</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">MS SQL</span>
+        <span class="tag">Angular</span>
+        <span class="tag">React</span>
+        <span class="tag">Next.js</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express.js</span>
+        <span class="tag">Knockout.js</span>
+        <span class="tag">jQuery</span>
+        <span class="tag">HTML</span>
+        <span class="tag">CSS / SASS</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag">Responsive Web Design</span>
+        <span class="tag">Azure</span>
+        <span class="tag">Azure DevOps</span>
+        <span class="tag">CI/CD</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Git</span>
+        <span class="tag">GitLab</span>
+        <span class="tag">GitHub</span>
+        <span class="tag">Hangfire</span>
+        <span class="tag">Sentry.io</span>
+        <span class="tag">Datadog</span>
+        <span class="tag">Google Analytics</span>
+        <span class="tag">Sitecore CMS</span>
+        <span class="tag">Silverlight 5</span>
+        <span class="tag">TestCafe</span>
+        <span class="tag">Cucumber / Gherkin</span>
+        <span class="tag">Postman</span>
+        <span class="tag">Jira</span>
+        <span class="tag">Confluence</span>
+        <span class="tag">Bitbucket</span>
+        <span class="tag">Agile / Scrum</span>
+        <span class="tag">Kanban</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Aspose.Slides.NET</span>
+        <span class="tag">Newtonsoft.JSON</span>
+        <span class="tag">PSD to HTML</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Education</div>
+      <div class="timeline">
+        <div class="entry">
+          <div class="entry-date">2010 – 2014</div>
+          <div class="entry-content">
+            <div class="entry-title">Bachelor's Degree in Computer Science</div>
+            <div class="entry-company">Petru Maior University · Târgu Mureș, Romania</div>
+          </div>
+        </div>
+        <div class="entry">
+          <div class="entry-date">2006 – 2011</div>
+          <div class="entry-content">
+            <div class="entry-title">High School Diploma — Mathematics &amp; Computer Science</div>
+            <div class="entry-company">Petru Maior High School · Reghin, Romania</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Language Skills</div>
+      <table class="lang-table">
+        <thead>
+          <tr>
+            <th>Language</th>
+            <th>Listening</th>
+            <th>Reading</th>
+            <th>Speaking</th>
+            <th>Interaction</th>
+            <th>Writing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="lang-name">Hungarian<br/><span style="font-size:11px;color:var(--muted);font-weight:400">Mother tongue</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+          </tr>
+          <tr>
+            <td class="lang-name">Romanian</td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+          </tr>
+          <tr>
+            <td class="lang-name">English</td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C2</span></td>
+            <td><span class="cefr">C1</span></td>
+            <td><span class="cefr">C1</span></td>
+            <td><span class="cefr">C1</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="lang-note">CEFR levels: A1–A2 Basic · B1–B2 Independent · C1–C2 Proficient</p>
+    </section>
+
+    <section>
+      <div class="section-title">Hobbies &amp; Interests</div>
+      <p class="hobbies-intro">I'm a mix of high energy and total tech geek, usually found either chasing a football or troubleshooting a server. I like to keep things moving — whether that's my fitness progress or my travel itinerary.</p>
+      <ul class="hobbies-list">
+        <li><strong>Staying Active:</strong> Passionate about fitness and football — the best way to clear my head and stay competitive.</li>
+        <li><strong>The "Mad Scientist" Phase:</strong> Built my own homelab as a personal playground for breaking tech, hosting services, and learning how things really work under the hood.</li>
+        <li><strong>Unwinding:</strong> Video games and TV shows with a soft spot for good cinematography and storytelling.</li>
+        <li><strong>Exploring:</strong> Love to travel and get out of my comfort zone to see how the rest of the world does things.</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    Robert Levente Titi · titirobilevi@gmail.com · Târgu Mureș, Romania
+  </footer>
+
+</div>
+</body>
+</html>
